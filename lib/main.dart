@@ -107,6 +107,7 @@ class _InputPageState extends State<InputPage> {
                 Slider
                   (
                   value: _currentHeight,
+                  min: 50,
                   max: 200,
                   divisions: 400,
                   label: _currentHeight.toStringAsFixed(1),

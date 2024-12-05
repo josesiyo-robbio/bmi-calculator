@@ -49,9 +49,11 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('BMI CALCULATOR',
+        style: kLabelTextStyle,),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
@@ -78,37 +80,98 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
 
-          //SLIDER
+          //SLIDER HEIGHT
           Expanded(
             child: customContainer
             (
               onPress:(){},
               coloring: kMainColor,
-              cardChild: Column(
+              cardChild: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('HEIGTH')
+                Text('HEIGTH',
+                style: kLabelTextStyle,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('180', style: kLabelTextStyleFunction,),
+                    Text('cm', style: kLabelTextStyle,)
+                  ],
+                )
               ],
               ),
             ),
           ),
 
+
           Row(
             children: [
+
+              //WEIGHT CARD
               Expanded(
                 child: customContainer
                 (
                   onPress:(){},
                   coloring: kMainColor,
-                  cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:
+                    [
+                      Text('WEIGHT', style: kLabelTextStyle,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('180', style: kLabelTextStyleFunction,),
+                        ],
+
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(onPressed:() {} , child: Icon(Icons.add_box_rounded)),
+                          SizedBox(
+                          child: Padding(padding: EdgeInsets.all(5)),
+                          ),
+                          ElevatedButton(onPressed:() {} , child: Icon(Icons.indeterminate_check_box)),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
 
+              //AGE CARD
               Expanded(
                 child: customContainer
                 (
                   onPress:(){},
                   coloring: kMainColor,
-                  cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:
+                    [
+                      Text('AGE', style: kLabelTextStyle,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('99', style: kLabelTextStyleFunction,),
+                        ],
+
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(onPressed:() {} , child: Icon(Icons.add_box_rounded)),
+                          SizedBox(
+                            child: Padding(padding: EdgeInsets.all(5)),
+                          ),
+                          ElevatedButton(onPressed:() {} , child: Icon(Icons.indeterminate_check_box)),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

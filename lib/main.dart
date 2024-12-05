@@ -1,6 +1,8 @@
+import 'package:bmicalculator/widgets/customCard.dart';
+import 'package:bmicalculator/widgets/customContainer.dart';
 import 'package:flutter/material.dart';
 
-
+const bottomContainerHeight = 80.0;
 void main() => runApp(BMICalculator());
 
 class BMICalculator extends StatelessWidget {
@@ -29,70 +31,38 @@ class _InputPageState extends State<InputPage> {
           Row(
             children: [
               Expanded(
-                child: Container(
-                  height: 200, // Altura definida para que sea visible
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.amber,
-                  ),
-                ),
+                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
               ),
               Expanded(
-                child: Container(
-                  height: 200, // Altura definida para que sea visible
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.amber,
-                  ),
-                ),
+                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.female, nameCard: 'FEMALE',),),
               ),
             ],
           ),
-          // Contenedores adicionales
+
           Expanded(
-            child: Container(
-               // Altura definida para que sea visible
-              margin: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.amber,
-              ),
-            ),
+            child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
           ),
 
           Row(
             children: [
               Expanded(
-                child: Container(
-                  height: 200, // Altura definida para que sea visible
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.amber,
-                  ),
-                ),
+                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
               ),
               Expanded(
-                child: Container(
-                  height: 200, // Altura definida para que sea visible
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.amber,
-                  ),
-                ),
+                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
               ),
             ],
           ),
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomContainerHeight,
+            color: Colors.pink,
+          )
         ],
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
-        child: Icon(Icons.add),
-      ),
+
     );
   }
 }

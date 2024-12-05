@@ -1,8 +1,8 @@
 
 
 
-
 import 'package:flutter/material.dart';
+import '../styles/globalStyle.dart';
 
 class Customcard extends StatelessWidget
 {
@@ -27,7 +27,7 @@ class Customcard extends StatelessWidget
           SizedBox(
             height: 15.0,
           ),
-          Text(nameCard, style: TextStyle(fontSize: 18.0, color: Colors.black),)
+          Text(nameCard, style: kLabelTextStyle,)
         ],
       ) ,
     );

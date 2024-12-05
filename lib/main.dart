@@ -1,8 +1,17 @@
+import 'package:bmicalculator/styles/globalStyle.dart';
 import 'package:bmicalculator/widgets/customCard.dart';
 import 'package:bmicalculator/widgets/customContainer.dart';
 import 'package:flutter/material.dart';
 
 const bottomContainerHeight = 80.0;
+
+enum Gender {
+  male,
+  female
+}
+
+Gender selectedGender = Gender.male;
+
 void main() => runApp(BMICalculator());
 
 class BMICalculator extends StatelessWidget {
@@ -20,6 +29,22 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+
+  void selectMaleGender() {
+    setState(() {
+      selectedGender = Gender.male;
+      print(selectedGender);
+    });
+  }
+
+  void selectFemaleGender() {
+    setState(() {
+      selectedGender = Gender.female;
+      print(selectedGender);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,26 +55,61 @@ class _InputPageState extends State<InputPage> {
         children: [
           Row(
             children: [
+
+              //MALE SECTION
               Expanded(
-                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
+                child: customContainer
+                (
+                  onPress:selectMaleGender,
+                  coloring: selectedGender == Gender.male ? kMainColorMale  :  kInactiveColor,
+                  cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),
+                ),
               ),
+
+              //FEMALE SECTION
               Expanded(
-                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.female, nameCard: 'FEMALE',),),
+                child: customContainer
+                (
+                  onPress:selectFemaleGender,
+                  coloring: selectedGender == Gender.female ? kMainColorFemale  :  kInactiveColor,
+                  cardChild: Customcard(icon: Icons.female, nameCard: 'FEMALE',),
+                ),
               ),
             ],
           ),
 
+          //SLIDER
           Expanded(
-            child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
+            child: customContainer
+            (
+              onPress:(){},
+              coloring: kMainColor,
+              cardChild: Column(
+              children: [
+                Text('HEIGTH')
+              ],
+              ),
+            ),
           ),
 
           Row(
             children: [
               Expanded(
-                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
+                child: customContainer
+                (
+                  onPress:(){},
+                  coloring: kMainColor,
+                  cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),
+                ),
               ),
+
               Expanded(
-                child: customContainer(coloring: Colors.amber, cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),),
+                child: customContainer
+                (
+                  onPress:(){},
+                  coloring: kMainColor,
+                  cardChild: Customcard(icon: Icons.male, nameCard: 'MALE',),
+                ),
               ),
             ],
           ),

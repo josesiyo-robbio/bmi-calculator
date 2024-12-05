@@ -45,6 +45,9 @@ class _InputPageState extends State<InputPage> {
     });
   }
 
+  double _currentHeight = 150.0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,18 +89,35 @@ class _InputPageState extends State<InputPage> {
             (
               onPress:(){},
               coloring: kMainColor,
-              cardChild: const Column(
+              cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('HEIGTH',
+                const Text('HEIGTH',
                 style: kLabelTextStyle,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
                   children: [
-                    Text('180', style: kLabelTextStyleFunction,),
-                    Text('cm', style: kLabelTextStyle,)
+                    Text(_currentHeight.toString(), style: kLabelTextStyleFunction,),
+                    const Text('cm', style: kLabelTextStyle,),
                   ],
-                )
+
+                ),
+                Slider
+                  (
+                  value: _currentHeight,
+                  max: 200,
+                  divisions: 400,
+                  label: _currentHeight.toStringAsFixed(1),
+                  onChanged: (double value) {
+
+                    setState(() {
+                      _currentHeight = double.parse(value.toStringAsFixed(1));
+
+                    });
+
+                  },)
               ],
               ),
             ),

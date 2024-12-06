@@ -3,14 +3,17 @@
 
 import 'package:bmicalculator/widgets/customContainer.dart';
 import 'package:flutter/material.dart';
-
-import '../main.dart';
 import '../styles/globalStyle.dart';
-import '../widgets/customCard.dart';
+import 'inputPage.dart';
 
 class Resultspage extends StatelessWidget 
 {
-  const Resultspage({super.key});
+  const Resultspage({super.key, required this.bmiResult, required this.resultText, required this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
 
   @override
   Widget build(BuildContext context) 
@@ -33,10 +36,12 @@ class Resultspage extends StatelessWidget
               child: customContainer(coloring: Colors.amber, cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
+
                 children: [
-                  Text('Normal', style:kResultStyle ,),
-                  Text('18.3', style: kBMIStyle,),
-                  Text('yOUR BMI result ', style: kBodyStyle,)
+                  Text(resultText, style:kResultStyle ,),
+                  Text(bmiResult.toString(), style: kBMIStyle,),
+                  Padding(padding: EdgeInsets.only(left: 12.0),
+                  child: Text(interpretation, style: kBodyStyle,))
                 ],
               ), onPress: (){}),
           ),

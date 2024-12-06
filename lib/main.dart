@@ -1,16 +1,9 @@
+import 'package:bmicalculator/pages/resultsPage.dart';
 import 'package:bmicalculator/styles/globalStyle.dart';
 import 'package:bmicalculator/widgets/customCard.dart';
 import 'package:bmicalculator/widgets/customContainer.dart';
 import 'package:flutter/material.dart';
 
-const bottomContainerHeight = 80.0;
-
-enum Gender {
-  male,
-  female
-}
-
-Gender selectedGender = Gender.male;
 
 void main() => runApp(BMICalculator());
 
@@ -22,6 +15,16 @@ class BMICalculator extends StatelessWidget {
     );
   }
 }
+
+
+const bottomContainerHeight = 80.0;
+
+enum Gender {
+  male,
+  female
+}
+
+Gender selectedGender = Gender.male;
 
 class InputPage extends StatefulWidget {
   @override
@@ -46,6 +49,8 @@ class _InputPageState extends State<InputPage> {
   }
 
   double _currentHeight = 150.0;
+  int defaultWeight = 60;
+  int defaultAge = 18;
 
 
   @override
@@ -142,7 +147,7 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('180', style: kLabelTextStyleFunction,),
+                          Text(defaultWeight.toString(), style: kLabelTextStyleFunction,),
                         ],
 
                       ),
@@ -150,11 +155,25 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ElevatedButton(onPressed:() {} , child: Icon(Icons.add_box_rounded)),
+                          ElevatedButton(onPressed:() {
+                            setState(() {
+                              defaultWeight++;
+                            });
+                          } , child: Icon(Icons.add_box_rounded)),
                           SizedBox(
                           child: Padding(padding: EdgeInsets.all(5)),
                           ),
-                          ElevatedButton(onPressed:() {} , child: Icon(Icons.indeterminate_check_box)),
+                          ElevatedButton(onPressed:()
+                          {
+                            setState(()
+                            {
+                              defaultWeight--;
+                              if(defaultWeight <= 20)
+                              {
+                                defaultWeight = 20;
+                              }
+                            });
+                          } , child: Icon(Icons.indeterminate_check_box)),
                         ],
                       )
                     ],
@@ -176,7 +195,7 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('99', style: kLabelTextStyleFunction,),
+                          Text(defaultAge.toString(), style: kLabelTextStyleFunction,),
                         ],
 
                       ),
@@ -184,11 +203,23 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ElevatedButton(onPressed:() {} , child: Icon(Icons.add_box_rounded)),
+                          ElevatedButton(onPressed:() {
+                            setState(() {
+                              defaultAge++;
+                            });
+                          } , child: Icon(Icons.add_box_rounded)),
                           SizedBox(
                             child: Padding(padding: EdgeInsets.all(5)),
                           ),
-                          ElevatedButton(onPressed:() {} , child: Icon(Icons.indeterminate_check_box)),
+                          ElevatedButton(onPressed:() {
+                            setState(() {
+                              defaultAge--;
+                              if(defaultAge <= 0)
+                              {
+                                defaultAge = 0;
+                              }
+                            });
+                          } , child: Icon(Icons.indeterminate_check_box)),
                         ],
                       )
                     ],
@@ -197,11 +228,20 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: bottomContainerHeight,
-            color: Colors.pink,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Resultspage() ));
+
+            },
+
+            child: Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: bottomContainerHeight,
+              color: Colors.pink,
+              child: Text('CALCULATE',style: kLargeButtonStyle,),
+            ),
           )
         ],
       ),
